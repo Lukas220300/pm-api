@@ -12,14 +12,14 @@ config:
 services:
   appserver:
     build:
-      #- echo "\e[34m ===> Installing Symfony CLI \033[0m"
-      #- wget https://get.symfony.com/cli/installer -O - | bash
-      #- echo "\e[34m ===> Move Symfony binary \033[0m"
-      #- mv /var/www/.symfony/bin/symfony /usr/local/bin/symfony
-      #- echo "\e[34m ===> Composer install \033[0m"
-      #- composer i
-      # - echo "\e[34m ===> Export php-cs-fixer Path \033[0m"
-      #- export PATH="$PATH:$HOME/.composer/vendor/bin"
+      - echo "\e[34m ===> Installing Symfony CLI \033[0m"
+      - wget https://get.symfony.com/cli/installer -O - | bash
+      - echo "\e[34m ===> Move Symfony binary \033[0m"
+      - mv /var/www/.symfony/bin/symfony /usr/local/bin/symfony
+      - echo "\e[34m ===> Composer install \033[0m"
+      - composer i
+      - echo "\e[34m ===> Export php-cs-fixer Path \033[0m"
+      - export PATH="$PATH:$HOME/.composer/vendor/bin"
     overrides:
       environment:
         PHP_IDE_CONFIG: "serverName=password-manager-api.lndo.site"
