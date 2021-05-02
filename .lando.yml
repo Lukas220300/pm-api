@@ -1,0 +1,71 @@
+name: password-manager-api
+recipe: lamp
+
+config:
+  webroot: public
+  xdebug: true
+  php: '8.0'
+  database: mariadb
+  config:
+    php: config/lando/php.ini
+
+services:
+  appserver:
+    build:
+      #- echo "\e[34m ===> Installing Symfony CLI \033[0m"
+      #- wget https://get.symfony.com/cli/installer -O - | bash
+      #- echo "\e[34m ===> Move Symfony binary \033[0m"
+      #- mv /var/www/.symfony/bin/symfony /usr/local/bin/symfony
+      #- echo "\e[34m ===> Composer install \033[0m"
+      #- composer i
+      # - echo "\e[34m ===> Export php-cs-fixer Path \033[0m"
+      #- export PATH="$PATH:$HOME/.composer/vendor/bin"
+    overrides:
+      environment:
+        PHP_IDE_CONFIG: "serverName=password-manager-api.lndo.site"
+  database:
+    portforward: 3310
+
+
+tooling:
+  symfony:
+    service: appserver
+  console:
+    service: appserver
+    cmd: php bin/console
+  load-migrations:
+    service: appserver
+    cmd:
+      - echo "\e[34m ===> Prepare Database \033[0m"
+      - php bin/console doctrine:migrations:migrate
+  load-fixtures:
+    service: appserver
+    cmd:
+      - echo "\e[34m ===> Load Fixtures \033[0m"
+      - php bin/console doctrine:fixtures:load -n
+      - echo "\e[34m ===> Load Client Fixture \033[0m"
+      - php bin/console trikoder:oauth2:create-client --redirect-uri=https://localhost:3000/ --grant-type=authorization_code --scope read 3feed78580016addca9fba5fd7a43134
+  phpfixer:
+    service: appserver
+    cmd:
+      - echo "\e[34m ===> Running php-cs-fixer \033[0m"
+      - echo "\e[34m ===> Don't forget to copy '.php_cs.dist' to '.php_cs'. \033[0m"
+      - php-cs-fixer fix --config .php_cs
+  phpmetrics:
+    service: appserver
+    cmd:
+      - echo "\e[34m ===> Running phpMetrics \033[0m"
+      - echo "\e[34m ===> Reports saved to 'reports/phpmetrics/' \033[0m"
+      - phpmetrics --config=config/phpmetrics/config.json
+  phptest:
+    service: appserver
+    cmd:
+      - echo "\e[34m ===> Running phpUnit Tests \033[0m"
+      - php bin/phpunit
+  db-rebuild:
+    description: Rebuild the database for local development
+    cmd:
+      - appserver: php bin/console doctrine:database:drop --force
+      - appserver: php bin/console doctrine:database:create
+      - appserver: php bin/console doctrine:migrations:migrate -n
+      - appserver: php bin/console doctrine:fixtures:load -n
