@@ -1,7 +1,7 @@
 # Password Manager - API
 ## Infos
-Code: https://github.com/Lukas220300/pm-api/
-
+* Code: https://github.com/Lukas220300/pm-api/
+* Docs: https://password-manager-api.lndo.site/api/docs
 
 
 
