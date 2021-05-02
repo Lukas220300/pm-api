@@ -61,7 +61,7 @@ tooling:
     service: appserver
     cmd:
       - echo "\e[34m ===> Running phpUnit Tests \033[0m"
-      - php bin/phpunit
+      - php ./vendor/bin/phpunit
   db-rebuild:
     description: Rebuild the database for local development
     cmd:
