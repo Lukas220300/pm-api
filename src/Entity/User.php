@@ -45,6 +45,11 @@ class User implements UserInterface
      */
     private $lastname;
 
+    /**
+     * @ORM\OneToOne(targetEntity="KeyPair")
+     */
+    private KeyPair $keyPair;
+
     public function getId(): ?int
     {
         return $this->id;
