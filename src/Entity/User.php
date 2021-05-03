@@ -50,6 +50,14 @@ class User implements UserInterface
      */
     private KeyPair $keyPair;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Device", inversedBy="user")
+     */
+    private $devices;
+
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -161,6 +169,38 @@ class User implements UserInterface
     public function setLastname($lastname): void
     {
         $this->lastname = $lastname;
+    }
+
+    /**
+     * @return KeyPair
+     */
+    public function getKeyPair(): KeyPair
+    {
+        return $this->keyPair;
+    }
+
+    /**
+     * @param KeyPair $keyPair
+     */
+    public function setKeyPair(KeyPair $keyPair): void
+    {
+        $this->keyPair = $keyPair;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDevices()
+    {
+        return $this->devices;
+    }
+
+    /**
+     * @param mixed $devices
+     */
+    public function setDevices($devices): void
+    {
+        $this->devices = $devices;
     }
 
 }
