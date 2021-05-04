@@ -65,6 +65,11 @@ class User implements UserInterface
      */
     protected $entries;
 
+    /**
+     * @ORM\OneToMany(targetEntity="EntryShareOverlay", mappedBy="userSharedWith")
+     */
+    protected $sharedEntries;
+
 
 
     public function getId(): ?int

@@ -48,6 +48,11 @@ class Entry
      */
     protected $tags;
 
+    /**
+     * @ORM\OneToMany(targetEntity="EntryShareOverlay", mappedBy="entry")
+     */
+    protected $overlays;
+
 
     public function getId(): ?int
     {
