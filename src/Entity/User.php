@@ -56,12 +56,12 @@ class User implements UserInterface
     private $devices;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Tag")
+     * @ORM\OneToMany(targetEntity="Tag", mappedBy="user")
      */
     protected $tags;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Entry")
+     * @ORM\OneToMany(targetEntity="Entry", mappedBy="user")
      */
     protected $entries;
 
@@ -247,6 +247,22 @@ class User implements UserInterface
     public function setEntries($entries): void
     {
         $this->entries = $entries;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSharedEntries()
+    {
+        return $this->sharedEntries;
+    }
+
+    /**
+     * @param mixed $sharedEntries
+     */
+    public function setSharedEntries($sharedEntries): void
+    {
+        $this->sharedEntries = $sharedEntries;
     }
 
 }

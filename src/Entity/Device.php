@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\DeviceRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,12 +26,12 @@ class Device
     /**
      * @ORM\Column(type="datetime")
      */
-    protected \DateTime $firstLogin;
+    protected DateTime $firstLogin;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    protected \DateTime $lastLogin;
+    protected DateTime $lastLogin;
 
     /**
      * @ORM\ManyToMany(targetEntity="User", mappedBy="devices")
@@ -59,33 +60,33 @@ class Device
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getFirstLogin(): \DateTime
+    public function getFirstLogin(): DateTime
     {
         return $this->firstLogin;
     }
 
     /**
-     * @param \DateTime $firstLogin
+     * @param DateTime $firstLogin
      */
-    public function setFirstLogin(\DateTime $firstLogin): void
+    public function setFirstLogin(DateTime $firstLogin): void
     {
         $this->firstLogin = $firstLogin;
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getLastLogin(): \DateTime
+    public function getLastLogin(): DateTime
     {
         return $this->lastLogin;
     }
 
     /**
-     * @param \DateTime $lastLogin
+     * @param DateTime $lastLogin
      */
-    public function setLastLogin(\DateTime $lastLogin): void
+    public function setLastLogin(DateTime $lastLogin): void
     {
         $this->lastLogin = $lastLogin;
     }

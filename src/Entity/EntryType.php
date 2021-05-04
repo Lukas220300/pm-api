@@ -63,4 +63,5 @@ class EntryType
     {
         $this->description = $description;
     }
+
 }

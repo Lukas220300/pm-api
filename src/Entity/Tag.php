@@ -27,6 +27,11 @@ class Tag
      */
     protected $entries;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="tags")
+     */
+    protected User $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -62,6 +67,22 @@ class Tag
     public function setEntries($entries): void
     {
         $this->entries = $entries;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
     }
 
 }

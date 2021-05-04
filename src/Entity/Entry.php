@@ -53,6 +53,11 @@ class Entry
      */
     protected $overlays;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="entries")
+     */
+    protected User $user;
+
 
     public function getId(): ?int
     {
@@ -153,6 +158,38 @@ class Entry
     public function setTags($tags): void
     {
         $this->tags = $tags;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOverlays()
+    {
+        return $this->overlays;
+    }
+
+    /**
+     * @param mixed $overlays
+     */
+    public function setOverlays($overlays): void
+    {
+        $this->overlays = $overlays;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
     }
 
 }
