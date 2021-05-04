@@ -60,6 +60,10 @@ class User implements UserInterface
      */
     protected $tags;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Entry")
+     */
+    protected $entries;
 
 
 
@@ -206,6 +210,38 @@ class User implements UserInterface
     public function setDevices($devices): void
     {
         $this->devices = $devices;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param mixed $tags
+     */
+    public function setTags($tags): void
+    {
+        $this->tags = $tags;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEntries()
+    {
+        return $this->entries;
+    }
+
+    /**
+     * @param mixed $entries
+     */
+    public function setEntries($entries): void
+    {
+        $this->entries = $entries;
     }
 
 }

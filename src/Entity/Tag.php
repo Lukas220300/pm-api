@@ -22,6 +22,11 @@ class Tag
      */
     protected string $title;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Entry", mappedBy="tags")
+     */
+    protected $entries;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -41,6 +46,22 @@ class Tag
     public function setTitle(string $title): void
     {
         $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEntries()
+    {
+        return $this->entries;
+    }
+
+    /**
+     * @param mixed $entries
+     */
+    public function setEntries($entries): void
+    {
+        $this->entries = $entries;
     }
 
 }
