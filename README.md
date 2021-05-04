@@ -7,6 +7,7 @@
 ### Setup
 1. Run with Lando (https://lando.dev) `lando start`
 2. Load Fixtures `lando console doctrien:fixtures:load`
+3. Create local KeyPair for JWT `lando console lexik:jwt:generate-keypair`
 
 ### Test
 * Run `lando phptest`
