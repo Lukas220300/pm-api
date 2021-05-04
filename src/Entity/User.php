@@ -55,6 +55,11 @@ class User implements UserInterface
      */
     private $devices;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Tag")
+     */
+    protected $tags;
+
 
 
 
