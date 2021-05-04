@@ -20,7 +20,7 @@ class PrivateKeyTest extends TestCase
         $privateKey->setKey($privateKey_openssl);
         $privateKey->setSalt('6z7GKa9kpDN7KC3UCW1Hi');
 
-        $this->assertIsObject($privateKey, 'Asserting publicKey to be an Object');
+        $this->assertIsObject($privateKey, 'Asserting privateKey to be an Object');
         $this->assertIsObject($privateKey->getCreated(), 'Asserting created to be an Object');
         $this->assertEquals($dateTime->getTimestamp(), $privateKey->getCreated()->getTimestamp(), 'Asserting timestamp of given dateTime is ' . $dateTime->getTimestamp() . ' FOUND: ' . $privateKey->getCreated()->getTimestamp() . '.');
         $this->assertIsString($privateKey->getKey(), 'Asserting key to be a string');
