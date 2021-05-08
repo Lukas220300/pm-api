@@ -48,7 +48,7 @@ class User implements UserInterface
     /**
      * @ORM\OneToOne(targetEntity="KeyPair")
      */
-    private KeyPair $keyPair;
+    private ?KeyPair $keyPair = null;
 
     /**
      * @ORM\ManyToMany(targetEntity="Device", inversedBy="user")
@@ -69,7 +69,6 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="EntryShareOverlay", mappedBy="userSharedWith")
      */
     protected $sharedEntries;
-
 
 
     public function getId(): ?int
@@ -188,7 +187,7 @@ class User implements UserInterface
     /**
      * @return KeyPair
      */
-    public function getKeyPair(): KeyPair
+    public function getKeyPair(): ?KeyPair
     {
         return $this->keyPair;
     }
