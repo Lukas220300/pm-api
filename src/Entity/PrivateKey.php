@@ -19,7 +19,7 @@ class PrivateKey
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=10000)
+     * @ORM\Column(type="string", length=10000, name="keyString")
      */
     protected string $key;
 
