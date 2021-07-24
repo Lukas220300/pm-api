@@ -1,0 +1,14 @@
+App\Entity\User:
+  attributs:
+    id:
+      groups: ['read']
+    email:
+      groups: ['read']
+    pbkdf2Salt:
+      groups: []
+    roles:
+      groups: []
+    password:
+      groups: []
+    asymmetricKeyPair:
+      groups: []
