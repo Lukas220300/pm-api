@@ -9,3 +9,4 @@ resources:
 #      get: ~
 #      patch: ~
   App\Entity\AsymmetricKeyPair: ~
+  App\Entity\Entry: ~

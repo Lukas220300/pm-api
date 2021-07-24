@@ -49,6 +49,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private ?AsymmetricKeyPair $asymmetricKeyPair;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Entry", mappedBy="user")
+     */
+    private $entries;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -168,6 +173,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAsymmetricKeyPair(?AsymmetricKeyPair $asymmetricKeyPair): void
     {
         $this->asymmetricKeyPair = $asymmetricKeyPair;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEntries()
+    {
+        return $this->entries;
+    }
+
+    /**
+     * @param mixed $entries
+     */
+    public function setEntries($entries): void
+    {
+        $this->entries = $entries;
     }
 
 }
